@@ -22,6 +22,8 @@ const App: React.FC = () => {
   const today = new Date();
   const dateKey = today.toDateString();
 
+  const [username, setUsername] = useState<string | null>(null);
+
   // Listen for Reddit Backend Sync (Daily Challenge from Redis)
   useEffect(() => {
     if (isDevvitEnvironment()) {
@@ -29,6 +31,9 @@ const App: React.FC = () => {
         if (event.data.type === 'INIT_STATE') {
           if (event.data.payload?.dailyCase) {
              setCurrentCase(event.data.payload.dailyCase);
+          }
+          if (event.data.payload?.username) {
+             setUsername(event.data.payload.username);
           }
           setIsInitializing(false);
         }

@@ -30,16 +30,25 @@ router.get<{ postId: string }, InitResponse | { status: string; message: string 
     }
 
     try {
-      const [count, username] = await Promise.all([
-        redis.get('count'),
-        reddit.getCurrentUsername(),
-      ]);
+      let username: string | undefined = 'Guest';
+
+      // Only attempt to fetch username if we have a user ID context (logged in)
+      if (context.userId) {
+        try {
+          username = (await reddit.getCurrentUsername()) ?? 'Guest';
+        } catch (err) {
+          console.warn('Could not fetch username despite having userId:', err);
+          username = 'Guest';
+        }
+      }
+
+      const count = await redis.get('count');
 
       res.json({
         type: 'init',
         postId: postId,
         count: count ? parseInt(count) : 0,
-        username: username ?? 'anonymous',
+        username: username,
       });
     } catch (error) {
       console.error(`API Init Error for post ${postId}:`, error);
