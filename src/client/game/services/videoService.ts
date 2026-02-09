@@ -6,18 +6,13 @@ export const generateCaseBriefing = async (title: string, scenario: string) => {
     return await callDevvit('GENERATE_BRIEFING', { title, scenario });
   }
 
-  // 2. Direct API Fallback (via our Backend Proxy)
+  // 2. Standalone/Vercel Mode: Return text-only briefing (no AI generation)
   try {
-    const response = await fetch('/api/briefing', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ title, scenario }),
-    });
-
-    const data = await response.json();
-    return data;
+    return {
+      subtitles: `Welcome to the case of ${title}. ${scenario}`,
+      audio: null,
+      image: null,
+    };
   } catch (error) {
     console.error('Briefing Gen Error', error);
     return null;

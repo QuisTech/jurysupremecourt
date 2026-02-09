@@ -26,8 +26,11 @@ export const useCounter = () => {
         setState({ count: data.count, username: data.username, loading: false });
         setPostId(data.postId);
       } catch (err) {
-        console.error('Failed to init counter', err);
-        setState((prev) => ({ ...prev, loading: false }));
+        console.error('Failed to init counter (using standalone mode)', err);
+        // Standalone mode: use localStorage
+        const localCount = parseInt(localStorage.getItem('global_vote_count') || '0', 10);
+        setState({ count: localCount, username: 'Guest', loading: false });
+        setPostId('standalone');
       }
     };
     void init();
@@ -39,6 +42,17 @@ export const useCounter = () => {
         console.error('No postId – cannot update counter');
         return;
       }
+
+      // Standalone mode
+      if (postId === 'standalone') {
+        const currentCount = parseInt(localStorage.getItem('global_vote_count') || '0', 10);
+        const newCount = action === 'increment' ? currentCount + 1 : currentCount - 1;
+        localStorage.setItem('global_vote_count', newCount.toString());
+        setState((prev) => ({ ...prev, count: newCount }));
+        return;
+      }
+
+      // Backend mode
       try {
         const res = await fetch(`/api/${action}`, {
           method: 'POST',
