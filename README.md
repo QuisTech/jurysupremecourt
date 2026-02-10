@@ -7,6 +7,19 @@
 
 ---
 
+## 🛠️ Training Mode
+
+<img width="478" height="768" alt="Screenshot (212)" src="https://github.com/user-attachments/assets/378a3740-9256-4b0f-9eb3-517e75419d5b" />
+<img width="503" height="768" alt="Screenshot (213)" src="https://github.com/user-attachments/assets/bd6b3dd9-848d-45a3-b0df-6670481ff824" />
+<img width="512" height="768" alt="Screenshot (214)" src="https://github.com/user-attachments/assets/242a535b-1681-44a4-8b0d-2c0c71248830" />
+<img width="505" height="768" alt="Screenshot (215)" src="https://github.com/user-attachments/assets/dec5cb02-0f69-495a-9e88-63882aebedf6" />
+<img width="515" height="768" alt="Screenshot (216)" src="https://github.com/user-attachments/assets/86979689-eac8-449f-a2dc-b6c05fed8f44" />
+<img width="711" height="768" alt="Screenshot (217)" src="https://github.com/user-attachments/assets/481a2648-7a5d-46b8-a8cd-52d8c031e76b" />
+<img width="401" height="768" alt="Screenshot (218)" src="https://github.com/user-attachments/assets/1290d48b-859b-406f-ba8f-04441c548703" />
+<img width="498" height="768" alt="Screenshot (219)" src="https://github.com/user-attachments/assets/2a7fe30d-f530-45cb-ad6d-01b2ac39f181" />
+
+---
+
 ## 🎯 Inspiration
 
 Reddit is already the internet's largest courtroom. Millions judge strangers' actions daily in communities like r/AmITheAsshole. We asked: _What if passive judgment became active justice?_
